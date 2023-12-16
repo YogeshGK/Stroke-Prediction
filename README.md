@@ -34,11 +34,10 @@ The target variable is the stroke possibility expressed in either 1 or 0.
 
 
 ### Approach
-1. Exlore the dataset 
-3. Data preprocessing 
-4. Analyze correlations
-5. Train and evaluate model 
-6. Verify in test dataset
+    1. Exlore the dataset 
+    3. Data preprocessing 
+    4. Analyze correlations
+    5. Train and evaluate model 
 
 
 #### Explore the dataset 
@@ -55,6 +54,11 @@ The target variable is the stroke possibility expressed in either 1 or 0.
             - avg_glucose_level between 50-100
     - smoking_status : major cases fall in either never_smoked and unknown category
     - stroke : The dataset only contains 5% samples that represent no stroke. This leads to the class imbalance due to under representation of stroke cases.
+![App Screenshot](./images/before/gender.png)
+![App Screenshot](./images/before/heart_disease.png)
+![App Screenshot](./images/before/hypertension.png)
+![App Screenshot](./images/before/work_type.png)
+![App Screenshot](./images/before/stroke.png)
 
 #### Data preprocessing 
     - Handling missing and duplicate values
@@ -69,13 +73,18 @@ The target variable is the stroke possibility expressed in either 1 or 0.
     - The goal was drop the highly corelated features but the result was inconclusive to drop any features. eg. strong correlation between age vs married_type_no, its 0.7, with this data we can add one of the column. It seemed illogical to remove age in this case, as theoratically it could be a significant contributor to the stroke. 
     - Finally decided to not use result from this for now. More study needed on correlation matrix.  
     - The correlation plots are in images. Interesting to note The correlation plot does not change after normalizing the data. 
+![App Screenshot](./images/without-normalization.png)
 
 #### Train and evaluate model 
-  - After trying with few logistic regression models, the test accuracy didn't improve, it was 0. However they performed resonable well in training with > 90% accuracy. 
-  - Assuming the model could be overfitting, tried applying l2 regularization to apply penalty, but that didnt showed any improvement. 
-  - Decided to take a look at dataset again. Upon closer inspection, found the case of class imbalance.  
-  - To resolve this, used the imblearn.over_sampling package. It added more data and changed the overall distribution, which is evident from the mean values below of before and after SMOTE. 
-  - Test accuracy improved after this. The best accuarcy, 0.25 achieved was using SMOTE and applying logistic regression model.
+    - After trying with few logistic regression models, the test accuracy didn't improve, it was 0. However they performed resonably well in training with > 90% accuracy. 
+    - Assuming the model could be overfitting, tried applying l2 regularization to apply penalty, but that didnt showed any improvement. 
+    - Decided to take a look at dataset again. Upon closer inspection, found the case of class imbalance.  
+    - To resolve this, used the imblearn.over_sampling package. It added more data and changed the overall distribution, which is evident from the mean values below of before and after SMOTE. 
+![App Screenshot](./images/mean_before_after_smote.png)
+
+    - Test accuracy improved after this. The best accuarcy, 0.25 achieved was using SMOTE and applying logistic regression model.
+![App Screenshot](./images/result_summary.png)
+
   
 #### further plan
  -  The age, bmi and glucose_level, instead of using these features alone, we can group these in range/bins to study the effect on overall score.
