@@ -54,6 +54,7 @@ The target variable is the stroke possibility expressed in either 1 or 0.
             - bmi between 25-40 and
             - avg_glucose_level between 50-100
     - smoking_status : major cases fall in either never_smoked and unknown category
+    - stroke : The dataset only contains 5% samples that represent no stroke. This leads to the class imbalance due to under representation of stroke cases.
 
 #### Data preprocessing 
     - Handling missing and duplicate values
@@ -63,9 +64,25 @@ The target variable is the stroke possibility expressed in either 1 or 0.
         -   The dataset has few categorical features 'gender','work_type','ever_married','Residence_type','smoking_status'. 
         -   The encoding creates several additional features with numerical values, this will be helpful of model training.   
 
-#### Analyze correlations
+#### Analyze correlations 
+    - Plotted the heatmap with seaborn library of all features 
+    - The goal was drop the highly corelated features but the result was inconclusive to drop any features. eg. strong correlation between age vs married_type_no, its 0.7, with this data we can add one of the column. It seemed illogical to remove age in this case, as theoratically it could be a significant contributor to the stroke. 
+    - Finally decided to not use result from this for now. More study needed on correlation matrix.  
+    - The correlation plots are in images. Interesting to note The correlation plot does not change after normalizing the data. 
+
 #### Train and evaluate model 
-#### Verify in test dataset
+  - After trying with few logistic regression models, the test accuracy didn't improve, it was 0. However they performed resonable well in training with > 90% accuracy. 
+  - Assuming the model could be overfitting, tried applying l2 regularization to apply penalty, but that didnt showed any improvement. 
+  - Decided to take a look at dataset again. Upon closer inspection, found the case of class imbalance.  
+  - To resolve this, used the imblearn.over_sampling package. It added more data and changed the overall distribution, which is evident from the mean values below of before and after SMOTE. 
+  - Test accuracy improved after this. The best accuarcy, 0.25 achieved was using SMOTE and applying logistic regression model.
+  
+#### further plan
+ -  The age, bmi and glucose_level, instead of using these features alone, we can group these in range/bins to study the effect on overall score.
+ - Use other techniques including Recursive feature ellimination and sequential feature selection.
+
+  
+
 
 
 
