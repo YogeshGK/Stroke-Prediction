@@ -1,5 +1,5 @@
 # Stroke Prediction
-
+<img src="./images/strk-header.png" alt="Stroke" height="350" width="700">
 # Overview
 This project aims to predict whether an individual will develop stroke or not based on various health indicators. 
 As we have to classify the individual in either category of stroke, its a classic logistic regression problem.
