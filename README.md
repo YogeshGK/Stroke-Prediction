@@ -54,11 +54,7 @@ The target variable is the stroke possibility expressed in either 1 or 0.
             - avg_glucose_level between 50-100
     - smoking_status : major cases fall in either never_smoked and unknown category
     - stroke : The dataset only contains 5% samples that represent no stroke. This leads to the class imbalance due to under representation of stroke cases.
-![App Screenshot](./images/before/gender.png)
-![App Screenshot](./images/before/heart_disease.png)
-![App Screenshot](./images/before/hypertension.png)
-![App Screenshot](./images/before/work_type.png)
-![App Screenshot](./images/before/stroke.png)
+![App Screenshot](./images/before/imbalance.png)
 
 #### Data preprocessing 
     - Handling missing and duplicate values
@@ -85,16 +81,9 @@ The target variable is the stroke possibility expressed in either 1 or 0.
     - Test accuracy improved after this. The best accuarcy, 0.25 achieved was using SMOTE and applying logistic regression model.
 ![App Screenshot](./images/result_summary.png)
 
-  
-#### further plan
- -  The age, bmi and glucose_level, instead of using these features alone, we can group these in range/bins to study the effect on overall score.
- - Use other techniques including Recursive feature ellimination and sequential feature selection.
-
-  
-
-
-
-
+#### Roadmap further 
+    -  The age, bmi and glucose_level, instead of using these features alone, we can group these in range/bins to study the effect on overall score.
+    -  Use other techniques including Recursive feature ellimination and sequential feature selection.
 
 ## Reference
 - [Stroke Prediction by 123 of AI (Dec 2023)](https://kaggle.com/competitions/stroke-prediction-by-123-of-ai-dec-2023) by [Abbhinav Venkat](https://www.kaggle.com/abbhinavvenkat)
